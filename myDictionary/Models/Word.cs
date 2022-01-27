@@ -1,9 +1,25 @@
+using System.ComponentModel.DataAnnotations;
+
 namespace myDictionary.Models
 {
-    public class word
+    public class Word
     {
-        public int Id {get; set}
-        public string word {get; set}
-        public string description {get; set}
+        
+        public Word(int Id, string Term, string Description)
+        {
+            this.Id = Id;
+            this.Term = Term;
+            this.Description = Description;
+        }
+
+        [Key]
+        [Required]
+        public int Id {get; set;}
+        
+        [Required]
+        public string Term {get; set;}
+
+        [Required]
+        public string Description {get; set;}
     }
 }

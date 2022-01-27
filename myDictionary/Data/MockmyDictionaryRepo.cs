@@ -1,14 +1,18 @@
+using System.Collections.Generic;
+using myDictionary.Models;
+
+
 namespace myDictionary.Data
 {
     public class MockmyDictionaryRepo : ImyDictionaryRepo
     {
-        PUBLIC IEnumerable<Word> GetWords()
+        public IEnumerable<Word> GetAllWords()
         {
-            var words = new List<word>
+            var words = new List<Word>
             {
-                new Word(Id=0, word="alighe", description="for real"),
-                new Word(Id=1, word="bet", description="okay cool"),
-                new Word(Id=2, word="say less", description="for sure / down")
+                new Word(0, "alighe", "for real"),
+                new Word(1, "bet", "okay cool"),
+                new Word(2, "say less", "for sure / down")
             };
 
             return words;
@@ -16,7 +20,7 @@ namespace myDictionary.Data
 
         public Word GetWordById(int id)
         {
-            return new Word(Id=0, word="alighe", description="For REAL");
+            return new Word(0, "alighe", "For REAL");
 
             
         }

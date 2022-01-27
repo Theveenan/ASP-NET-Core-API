@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "Z0zZGshhIOrGs7+lwx9klztrhrEUIcZC/Y3beMnE2NUsD/sYSXuZ04QEOUGjHN5jbbBcCEqagqiCGuL+NoITiQ==",
+  "dgSpecHash": "hdr2v3QiHlAZwWfcYzwuBTWOTjXnIEQbmb8WBLz0vGbbi7UpIThElH7MB/9QvEZ+ir7OJg8gaonKD7/EFEaeWg==",
   "success": true,
-  "projectFilePath": "C:\\Users\\pc\\Documents\\GitHub\\ASP NET Core API\\myDictionary\\myDictionary.csproj",
+  "projectFilePath": "C:\\Users\\pc\\Documents\\GitHub\\ASP-NET-Core-API\\myDictionary\\myDictionary.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\pc\\.nuget\\packages\\microsoft.extensions.apidescription.server\\3.0.0\\microsoft.extensions.apidescription.server.3.0.0.nupkg.sha512",
     "C:\\Users\\pc\\.nuget\\packages\\microsoft.openapi\\1.2.3\\microsoft.openapi.1.2.3.nupkg.sha512",

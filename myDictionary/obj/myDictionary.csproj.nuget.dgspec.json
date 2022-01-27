@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\pc\\Documents\\GitHub\\ASP NET Core API\\myDictionary\\myDictionary.csproj": {}
+    "C:\\Users\\pc\\Documents\\GitHub\\ASP-NET-Core-API\\myDictionary\\myDictionary.csproj": {}
   },
   "projects": {
-    "C:\\Users\\pc\\Documents\\GitHub\\ASP NET Core API\\myDictionary\\myDictionary.csproj": {
+    "C:\\Users\\pc\\Documents\\GitHub\\ASP-NET-Core-API\\myDictionary\\myDictionary.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\pc\\Documents\\GitHub\\ASP NET Core API\\myDictionary\\myDictionary.csproj",
+        "projectUniqueName": "C:\\Users\\pc\\Documents\\GitHub\\ASP-NET-Core-API\\myDictionary\\myDictionary.csproj",
         "projectName": "myDictionary",
-        "projectPath": "C:\\Users\\pc\\Documents\\GitHub\\ASP NET Core API\\myDictionary\\myDictionary.csproj",
+        "projectPath": "C:\\Users\\pc\\Documents\\GitHub\\ASP-NET-Core-API\\myDictionary\\myDictionary.csproj",
         "packagesPath": "C:\\Users\\pc\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\pc\\Documents\\GitHub\\ASP NET Core API\\myDictionary\\obj\\",
+        "outputPath": "C:\\Users\\pc\\Documents\\GitHub\\ASP-NET-Core-API\\myDictionary\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages",
