@@ -9,7 +9,15 @@ namespace myDictionary.Controllers
     [ApiController]
     public class WordsController : ControllerBase
     {
-        private readonly MockmyDictionaryRepo _repository = new MockmyDictionaryRepo();
+        private readonly ImyDictionaryRepo _repository;
+        
+        public WordsController(ImyDictionaryRepo repository){
+            _repository = repository;
+
+        }
+
+        //private readonly MockmyDictionaryRepo _repository = new MockmyDictionaryRepo();
+
         //GET api/words
         [HttpGet]
         public ActionResult <IEnumerable<Word>> GetAllWords()

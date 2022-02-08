@@ -11,6 +11,8 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Microsoft.OpenApi.Models;
+using myDictionary.Models;
+using myDictionary.Data;
 
 namespace myDictionary
 {
@@ -28,6 +30,9 @@ namespace myDictionary
         {
 
             services.AddControllers();
+
+            services.AddScoped<ImyDictionaryRepo, MockmyDictionaryRepo>();
+
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "myDictionary", Version = "v1" });
