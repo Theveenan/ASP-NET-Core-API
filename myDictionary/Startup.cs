@@ -13,6 +13,9 @@ using Microsoft.Extensions.Logging;
 using Microsoft.OpenApi.Models;
 using myDictionary.Models;
 using myDictionary.Data;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Design;
+//using Microsoft.EntityFrameworkCore.Tools;
 
 namespace myDictionary
 {
@@ -28,6 +31,8 @@ namespace myDictionary
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddDbContext<myDictionaryContext>(opt => opt.UseSqlServer
+                (Configuration.GetConnectionString("myDictionaryConnection")));
 
             services.AddControllers();
 
