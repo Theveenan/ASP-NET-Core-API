@@ -36,7 +36,8 @@ namespace myDictionary
 
             services.AddControllers();
 
-            services.AddScoped<ImyDictionaryRepo, MockmyDictionaryRepo>();
+            //services.AddScoped<ImyDictionaryRepo, MockmyDictionaryRepo>();
+            services.AddScoped<ImyDictionaryRepo, SqlmyDictionaryRepo>();
 
             services.AddSwaggerGen(c =>
             {
