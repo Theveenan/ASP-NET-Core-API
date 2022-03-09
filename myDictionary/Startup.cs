@@ -36,6 +36,8 @@ namespace myDictionary
 
             services.AddControllers();
 
+            services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
+
             //services.AddScoped<ImyDictionaryRepo, MockmyDictionaryRepo>();
             services.AddScoped<ImyDictionaryRepo, SqlmyDictionaryRepo>();
 
