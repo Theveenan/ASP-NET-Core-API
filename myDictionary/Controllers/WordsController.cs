@@ -32,7 +32,7 @@ namespace myDictionary.Controllers
         }
 
         //Get api/words/{id}
-        [HttpGet("{id}")]
+        [HttpGet("{id}", Name="GetWordById")]
         public ActionResult <WordReadDto> GetWordById(int id)
         {
             var wordItem = _repository.GetWordById(id);
@@ -45,12 +45,16 @@ namespace myDictionary.Controllers
 
         //Post api/commands
         [HttpPost]
-        public ActionResult <WordReadDto> CreateWord(WordCreateDto WordCreateDto)
+        public ActionResult <WordReadDto> CreateWord(WordCreateDto wordCreateDto)
         {
-            var wordModel = _mapper.Map<Word>(WordCreateDto);
+            var wordModel = _mapper.Map<Word>(wordCreateDto);
             _repository.CreateWord(wordModel);
+            _repository.SaveChanges();
 
-            return Ok(wordModel);
+            var wordReadTo = _mapper.Map<WordReadDto>(wordModel);
+
+            return CreatedAtRoute(nameof(GetWordById), new {Id = wordReadTo.Id}, wordReadTo); 
+            //return Ok(wordReadTo);
         }
 
     }
