@@ -6,6 +6,11 @@ namespace myDictionary.Data
 {
     public class MockmyDictionaryRepo : ImyDictionaryRepo
     {
+        public void CreateWord(Word word)
+        {
+            throw new System.NotImplementedException();
+        }
+
         public IEnumerable<Word> GetAllWords()
         {
             var words = new List<Word>
@@ -23,6 +28,11 @@ namespace myDictionary.Data
             return new Word(0, "alighe", "For REAL");
 
             
+        }
+
+        public bool SaveChanges()
+        {
+            throw new System.NotImplementedException();
         }
     }
 }

@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using myDictionary.Models;
@@ -21,6 +22,21 @@ namespace myDictionary.Data
         public Word GetWordById(int id)
         {
             return _context.Words.FirstOrDefault(p => p.Id == id);
+        }
+
+        public bool SaveChanges()
+        {
+            return (_context.SaveChanges() >= 0);
+        }
+
+        public void CreateWord(Word word)
+        {
+            if(word == null)
+            {
+                throw new ArgumentNullException(nameof(word));
+            }
+            _context.Words.Add(word);
+            
         }
     }
 }

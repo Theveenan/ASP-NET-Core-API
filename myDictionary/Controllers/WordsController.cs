@@ -2,6 +2,8 @@ using Microsoft.AspNetCore.Mvc;
 using myDictionary.Models;
 using myDictionary.Data;
 using System.Collections.Generic;
+using AutoMapper;
+using myDictionary.Dtos;
 
 namespace myDictionary.Controllers
 {
@@ -10,9 +12,11 @@ namespace myDictionary.Controllers
     public class WordsController : ControllerBase
     {
         private readonly ImyDictionaryRepo _repository;
+        private readonly IMapper _mapper;
         
-        public WordsController(ImyDictionaryRepo repository){
+        public WordsController(ImyDictionaryRepo repository, IMapper mapper){
             _repository = repository;
+            _mapper = mapper;
 
         }
 
@@ -20,20 +24,34 @@ namespace myDictionary.Controllers
 
         //GET api/words
         [HttpGet]
-        public ActionResult <IEnumerable<Word>> GetAllWords()
+        public ActionResult <IEnumerable<WordReadDto>> GetAllWords()
         {
             var wordItems = _repository.GetAllWords();
 
-            return Ok(wordItems);
+            return Ok(_mapper.Map<IEnumerable<WordReadDto>>(wordItems));
         }
 
         //Get api/words/{id}
         [HttpGet("{id}")]
-        public ActionResult <Word> GetWordById(int id)
+        public ActionResult <WordReadDto> GetWordById(int id)
         {
             var wordItem = _repository.GetWordById(id);
-
-            return Ok(wordItem);
+            if(wordItem != null)
+            {
+                return Ok(_mapper.Map<WordReadDto>(wordItem));
+            }
+            return NotFound();
         }
+
+        //Post api/commands
+        [HttpPost]
+        public ActionResult <WordReadDto> CreateWord(WordCreateDto WordCreateDto)
+        {
+            var wordModel = _mapper.Map<Word>(WordCreateDto);
+            _repository.CreateWord(wordModel);
+
+            return Ok(wordModel);
+        }
+
     }
 }
