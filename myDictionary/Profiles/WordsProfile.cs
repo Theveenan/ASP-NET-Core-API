@@ -12,6 +12,8 @@ namespace myDictionary.Profiles
                 //       <Source -> Target>
                 CreateMap<Models.Word, WordReadDto>();
                 CreateMap<WordCreateDto, Models.Word>();
+                CreateMap<WordUpdateDto, Models.Word>();
+                CreateMap<Models.Word, WordUpdateDto>();
             }
 
     }

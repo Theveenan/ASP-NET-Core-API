@@ -4,6 +4,7 @@ using myDictionary.Data;
 using System.Collections.Generic;
 using AutoMapper;
 using myDictionary.Dtos;
+using Microsoft.AspNetCore.JsonPatch;
 
 namespace myDictionary.Controllers
 {
@@ -43,7 +44,7 @@ namespace myDictionary.Controllers
             return NotFound();
         }
 
-        //Post api/commands
+        //Post api/words
         [HttpPost]
         public ActionResult <WordReadDto> CreateWord(WordCreateDto wordCreateDto)
         {
@@ -55,6 +56,72 @@ namespace myDictionary.Controllers
 
             return CreatedAtRoute(nameof(GetWordById), new {Id = wordReadTo.Id}, wordReadTo); 
             //return Ok(wordReadTo);
+        }
+
+        //PUT api/words/{id}
+        [HttpPut("{id}")]
+        public ActionResult UpdateWord(int id, WordUpdateDto wordUpdateDto)
+        {
+            var wordModelFromRepo = _repository.GetWordById(id);
+            if(wordModelFromRepo == null){
+                return NotFound();
+            }
+
+            _mapper.Map(wordUpdateDto, wordModelFromRepo);
+
+            //Tutorial put this in as "Good Practice" for other implementations if we were to ever switch
+            //Although its "counter intuitive" and unneeded when considering just sticking with SQL implementation
+           // _repository.UpdateWord(wordModelFromRepo);
+
+            _repository.SaveChanges();
+
+            return NoContent();
+        }
+
+        //PATCH api/words/{id}
+        [HttpPatch("{id}")]
+        public ActionResult PartialWordUpdate(int id, JsonPatchDocument<WordUpdateDto> patchDoc)
+        {
+            var wordModelFromRepo = _repository.GetWordById(id);
+            if(wordModelFromRepo == null)
+            {
+                return NotFound();
+            }
+        
+
+            var wordToPatch = _mapper.Map<WordUpdateDto>(wordModelFromRepo);
+            patchDoc.ApplyTo(wordToPatch, ModelState);
+            if(!TryValidateModel(wordToPatch))
+            {
+                return ValidationProblem(ModelState);
+            }
+
+            _mapper.Map(wordToPatch, wordModelFromRepo);
+
+            
+            //Tutorial put this in as "Good Practice" for other implementations if we were to ever switch
+            //Although its "counter intuitive" and unneeded when considering just sticking with SQL implementation
+            // _repository.UpdateWord(wordModelFromRepo);
+
+            _repository.SaveChanges();
+
+            return NoContent();
+        }
+
+        //DELETE api/words/{id}
+        [HttpDelete("{id}")]
+        public ActionResult DeleteWord(int id)
+        {
+            var wordModelFromRepo = _repository.GetWordById(id);
+            if(wordModelFromRepo == null)
+            {
+                return NotFound();
+            }
+
+            _repository.DeleteWord(wordModelFromRepo);
+            _repository.SaveChanges();
+
+            return NoContent();
         }
 
     }

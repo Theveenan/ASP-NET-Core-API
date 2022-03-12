@@ -12,5 +12,9 @@ namespace myDictionary.Data
         Word GetWordById(int id);
 
         void CreateWord(Word word);
+
+        void UpdateWord(Word word);
+
+        void DeleteWord(Word word);
     }
 }

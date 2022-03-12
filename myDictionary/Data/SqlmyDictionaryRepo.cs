@@ -38,5 +38,19 @@ namespace myDictionary.Data
             _context.Words.Add(word);
             
         }
+
+        public void UpdateWord(Word word)
+        {
+            //nothing
+        }
+
+        public void DeleteWord(Word word)
+        {
+            if(word == null)
+            {
+                throw new ArgumentNullException(nameof(word));
+            }
+            _context.Words.Remove(word);
+        }
     }
 }

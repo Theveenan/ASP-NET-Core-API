@@ -2,7 +2,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace myDictionary.Dtos
 {
-    public class WordCreateDto
+    public class WordUpdateDto
     {
 
         //Dont supply this as the Database is creating the ID, not the client user

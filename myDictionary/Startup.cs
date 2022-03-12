@@ -16,6 +16,7 @@ using myDictionary.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Design;
 //using Microsoft.EntityFrameworkCore.Tools;
+using Newtonsoft.Json.Serialization;
 
 namespace myDictionary
 {
@@ -34,7 +35,9 @@ namespace myDictionary
             services.AddDbContext<myDictionaryContext>(opt => opt.UseSqlServer
                 (Configuration.GetConnectionString("myDictionaryConnection")));
 
-            services.AddControllers();
+            services.AddControllers().AddNewtonsoftJson(s => {
+                s.SerializerSettings.ContractResolver = new CamelCasePropertyNamesContractResolver();
+            });
 
             services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 

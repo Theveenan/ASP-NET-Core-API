@@ -11,6 +11,11 @@ namespace myDictionary.Data
             throw new System.NotImplementedException();
         }
 
+        public void DeleteWord(Word word)
+        {
+            throw new System.NotImplementedException();
+        }
+
         public IEnumerable<Word> GetAllWords()
         {
             var words = new List<Word>
@@ -38,5 +43,11 @@ namespace myDictionary.Data
         {
             throw new System.NotImplementedException();
         }
+
+        public void UpdateWord(Word word)
+        {
+            throw new System.NotImplementedException();
+        }
+
     }
 }
